@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Wishlist</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <img src="{% static 'images/logo.png' %}" class="logo" alt="Logo">
+        <nav>
+            <a href="{% url 'home' %}">🏠 Home</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="wishlist-container">
+        <h1>Your Wishlist</h1>
+        {% if wishlist %}
+            <div class="wishlist-grid">
+                {% for item in wishlist %}
+                    <div class="wishlist-card {% if item.visited %}visited{% endif %}">
+                        <img src="{{ item.place.image.url }}" alt="{{ item.place.name }}">
+                        <h2>{{ item.place.name }}</h2>
+                        <p>{{ item.place.description }}</p>
+                        <p>Status: <strong>{{ item.visited|yesno:"Visited,Not Visited" }}</strong></p>
+                        <div class="wishlist-actions">
+                            {% if not item.visited %}
+                                <a href="{% url 'mark_visited' item.id %}" class="btn">✔️ Mark Visited</a>
+                            {% endif %}
+                            <a href="{% url 'remove_from_wishlist' item.id %}" class="btn btn-danger">🗑️ Remove</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Your wishlist is empty. <a href="{% url 'home' %}">Explore places →</a></p>
+        {% endif %}
+    </main>
+</body>
+</html>
