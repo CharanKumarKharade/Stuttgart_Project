@@ -7,45 +7,88 @@ body {
 }
 
 /* ==== Navbar ==== */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2c3e50;
-    padding: 10px 30px;
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    padding: 16px 40px;
     color: white;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.navbar-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .navbar .logo {
-    height: 45px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ecf0f1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar nav {
+.navbar .logo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-title {
+    flex: 2;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #f1f1f1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-links {
+    flex: 1;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    gap: 15px;
 }
 
-.navbar nav a {
-    color: white;
-    margin-left: 20px;
+.navbar-links a {
+    color: #ecf0f1;
     text-decoration: none;
     font-weight: 500;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
 }
 
-.navbar nav a:hover {
-    background-color: #34495e;
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
 }
 
-.navbar nav a.active {
+.navbar-links a.active {
     background-color: #1abc9c;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
+    border-color: #16a085;
+}
+.navbar-links a.active:hover {
+    background-color: #16a085;
+    border-color: #1abc9c;
 }
 
 /* ==== Overlay ==== */
@@ -62,6 +105,20 @@ body {
 
 .hidden {
     display: none;
+}
+
+.explore-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 30px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.explore-title:hover {
+    color: #3498db;
 }
 
 /* ==== Auth Forms ==== */
@@ -301,3 +358,4 @@ body {
     position: fixed;
     top: 70px;
     left: 50%;
+}
